@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GameFiles">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="FrameworkFiles">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="GameFiles\AI">
+      <UniqueIdentifier>{dc87366f-b7ba-489b-ba6e-d979b7736d1f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AIPopulationManager.cpp">
+      <Filter>GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacles.cpp">
+      <Filter>GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>FrameworkFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>FrameworkFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="structs.cpp">
+      <Filter>FrameworkFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>FrameworkFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix2x3.cpp">
+      <Filter>FrameworkFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>FrameworkFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="AIGenetics.cpp">
+      <Filter>GameFiles\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AIPlayer.cpp">
+      <Filter>GameFiles\AI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>FrameworkFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>FrameworkFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix2x3.h">
+      <Filter>FrameworkFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="structs.h">
+      <Filter>FrameworkFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>FrameworkFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2f.h">
+      <Filter>FrameworkFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="AIPopulationManager.h">
+      <Filter>GameFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacles.h">
+      <Filter>GameFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="AIGenetics.h">
+      <Filter>GameFiles\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AIPlayer.h">
+      <Filter>GameFiles\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>GameFiles</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDLWin32.props" />
+    <None Include="SDLx64.props" />
+  </ItemGroup>
+</Project>
