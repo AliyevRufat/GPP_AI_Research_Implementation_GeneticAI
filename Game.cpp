@@ -5,7 +5,7 @@
 
 Game::Game(const Window& window)
 	:m_Window{ window }
-	, m_Population{ 2000 }
+	, m_Population{ 1500 }
 	, m_Goal{ 30.0f, 500.0f }
 	, m_Obstacles{}
 {
