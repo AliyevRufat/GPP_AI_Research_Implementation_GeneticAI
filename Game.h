@@ -29,6 +29,7 @@ private:
 	AIPopulationManager m_Population;
 	Vector2f m_Goal;
 	Obstacles m_Obstacles;
+	bool m_CanStart; // made this variable to press a button and start the algoritm (for screen recording purpose)
 	// FUNCTIONS
 	void Initialize();
 	void Cleanup();

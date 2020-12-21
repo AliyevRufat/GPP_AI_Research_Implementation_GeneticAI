@@ -5,7 +5,7 @@ AIPopulationManager::AIPopulationManager(int populationSize)
 	:m_Players{}
 	, m_OldGenPlayers{}
 	, m_NrOfGeneration{}
-	, m_MinAmountOfMoves{ 400 }
+	, m_MinAmountOfMoves{ 600 }
 	, m_MutationRate{ 0.01f }
 {
 	//pass the given size
@@ -86,7 +86,7 @@ void AIPopulationManager::Selection()
 	m_Players = nextGenPlayers;
 	//
 	++m_NrOfGeneration;
-	std::cout << m_NrOfGeneration << '\n';
+	std::cout << "Generation Count: " << m_NrOfGeneration << '\n';
 }
 
 AIPlayer AIPopulationManager::SelectBestParent()

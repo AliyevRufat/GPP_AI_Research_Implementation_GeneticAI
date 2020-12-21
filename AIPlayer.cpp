@@ -9,7 +9,7 @@
 #include "Obstacles.h"
 
 AIPlayer::AIPlayer()
-	:m_Genes{ 400 }
+	:m_Genes{ 600 }
 	, m_IsBestPlayer{ false }
 	, m_IsDead{ false }
 	, m_HasReachedGoal{ false }
