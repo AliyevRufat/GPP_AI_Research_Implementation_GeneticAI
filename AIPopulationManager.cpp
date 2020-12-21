@@ -5,7 +5,7 @@ AIPopulationManager::AIPopulationManager(int populationSize)
 	:m_Players{}
 	, m_OldGenPlayers{}
 	, m_NrOfGeneration{}
-	, m_MinAmountOfMoves{ 600 }
+	, m_MinAmountOfMoves{ 700 }
 	, m_MutationRate{ 0.01f }
 {
 	//pass the given size

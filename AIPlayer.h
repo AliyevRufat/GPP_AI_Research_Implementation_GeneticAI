@@ -39,4 +39,5 @@ private:
 	Vector2f m_Acc;
 	Vector2f m_Goal;
 	float m_Size;
+	bool m_IsObstacleWall;
 };

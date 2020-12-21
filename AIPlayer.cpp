@@ -9,7 +9,7 @@
 #include "Obstacles.h"
 
 AIPlayer::AIPlayer()
-	:m_Genes{ 600 }
+	:m_Genes{ 700 }
 	, m_IsBestPlayer{ false }
 	, m_IsDead{ false }
 	, m_HasReachedGoal{ false }
@@ -19,9 +19,10 @@ AIPlayer::AIPlayer()
 	, m_Acc{}
 	, m_Size{ 5.0f }
 	, m_Goal{}
+	, m_IsObstacleWall{}
 {
 	//starting pos
-	m_Pos = Vector2f(350.0f, 10.0f);
+	m_Pos = Vector2f(70.0f, 250.0f);
 	m_Vel = Vector2f(0, 0);
 	m_Acc = Vector2f(0, 0);
 }
@@ -41,8 +42,8 @@ void AIPlayer::Movement()
 	//move pos
 	m_Vel += m_Acc;
 	//clamp velocity
-	m_Vel.x = Clamp(m_Vel.x, -5.0f, 5.0f);
-	m_Vel.y = Clamp(m_Vel.y, -5.0f, 5.0f);
+	m_Vel.x = Clamp(m_Vel.x, -2.0f, 2.0f);
+	m_Vel.y = Clamp(m_Vel.y, -2.0f, 2.0f);
 	m_Pos += m_Vel;
 }
 
@@ -60,9 +61,16 @@ void AIPlayer::Update(float elapsedSec, const Obstacles& obstacles)
 		{
 			m_HasReachedGoal = true;
 		}
-		else if (obstacles.IsOverlappingWithObstacles(Vector2f(m_Pos), m_Size)) // if overlapping with any of the obstacles
+		else if (obstacles.IsOverlappingWithObstacles(Vector2f(m_Pos), m_Size, m_IsObstacleWall)) // if overlapping with any of the obstacles
 		{
-			m_IsDead = true;
+			if (m_IsObstacleWall)
+			{
+				m_Vel *= -1.0f;
+			}
+			else
+			{
+				m_IsDead = true;
+			}
 		}
 	}
 }
@@ -72,14 +80,20 @@ void AIPlayer::Draw() const
 	//draw Ai
 	if (m_IsBestPlayer) // draw best player
 	{
-		glColor4f(0.f, 0.f, 1.f, 1.f);
-		utils::DrawRect(m_Pos.x + 10.0f, m_Pos.y + 10.0f, 10.0f, 10.0f, 4.0f);
+		if (!m_IsDead)
+		{
+			glColor4f(0.f, 0.f, 1.f, 1.f);
+			utils::DrawRect(m_Pos.x + 10.0f, m_Pos.y + 10.0f, 10.0f, 10.0f, 4.0f);
+		}
 	}
 	else // draw everyone else
 	{
-		glColor4f(1.f, 0.f, 0.f, 1.f);
+		if (!m_IsDead)
+		{
+			glColor4f(1.f, 0.f, 0.f, 1.f);
 
-		utils::DrawRect(m_Pos.x + 5.0f, m_Pos.y + 5.0f, m_Size, m_Size, 2.0f);
+			utils::DrawRect(m_Pos.x + 5.0f, m_Pos.y + 5.0f, m_Size, m_Size, 2.0f);
+		}
 	}
 }
 

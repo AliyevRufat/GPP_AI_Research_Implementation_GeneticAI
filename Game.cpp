@@ -5,8 +5,8 @@
 
 Game::Game(const Window& window)
 	:m_Window{ window }
-	, m_Population{ 4000 }
-	, m_Goal{ 350.0f, 670.0f }
+	, m_Population{ 1000 }
+	, m_Goal{ 530.0f,230.0f }
 	, m_Obstacles{}
 	, m_CanStart{ false }
 {
@@ -40,6 +40,32 @@ void Game::Initialize()
 	//m_Obstacles.AddObstacle(Vector2f(520.0f, 20.0f), 50.0f, 50.0f, false, 0.0f);
 	//m_Obstacles.AddObstacle(Vector2f(620.0f, 20.0f), 50.0f, 50.0f, false, 0.0f);
 	//m_Obstacles.AddObstacle(Vector2f(720.0f, 20.0f), 50.0f, 50.0f, false, 0.0f);
+
+	//level
+	m_Obstacles.AddObstacle(Vector2f(0.0f, 0.0f), 170.0f, 230.0f, false, 0.0f, false, true);
+	m_Obstacles.AddObstacle(Vector2f(0.0f, 230.0f), 60.0f, 130.0f, false, 0.0f, false, true);
+	m_Obstacles.AddObstacle(Vector2f(0.0f, 360.0f), 170.0f, 700.0f, false, 0.0f, false, true);
+	m_Obstacles.AddObstacle(Vector2f(170.0f, 420.0f), 700.0f, 700.0f, false, 0.0f, false, true);
+	m_Obstacles.AddObstacle(Vector2f(530.0f, 360.0f), 700.0f, 700.0f, false, 0.0f, false, true);
+	m_Obstacles.AddObstacle(Vector2f(640.0f, 230.0f), 700.0f, 700.0f, false, 0.0f, false, true);
+	m_Obstacles.AddObstacle(Vector2f(530.0f, 0.0f), 700.0f, 230.0f, false, 0.0f, false, true);
+	m_Obstacles.AddObstacle(Vector2f(170.0f, 0.0f), 700.0f, 165.0f, false, 0.0f, false, true);
+
+	//moving enemies
+	for (size_t i = 0; i < 13; i++)
+	{
+		bool moveUp = {};
+		if (i % 2 == 0)
+		{
+			moveUp = true;
+		}
+		else
+		{
+			moveUp = false;
+		}
+		//
+		m_Obstacles.AddObstacle(Vector2f(170.0f + i * 30, 285.0f), 15.0f, 15.0f, true, 120.0f, moveUp);
+	}
 }
 
 void Game::Cleanup()
@@ -75,6 +101,8 @@ void Game::Draw() const
 {
 	ClearBackground();
 	//
+	DrawLevel();
+	//
 	m_Obstacles.DrawObstacles();
 	//draw ai
 	m_Population.Draw();
@@ -82,7 +110,18 @@ void Game::Draw() const
 	//draw m_Goal
 	glColor4f(0.f, 1.f, 0.f, 1.f);
 
-	utils::FillRect(m_Goal.x, m_Goal.y, 20.0f, 20.0f);
+	utils::FillRect(m_Goal.x, m_Goal.y, 110.0f, 130.0f);
+}
+
+void Game::DrawLevel() const
+{
+	glColor4f(0.f, 1.f, 0.f, 1.0f);
+	//start pos
+	utils::FillRect(Rectf{ 60.0f,230.0f,110.0f,130.0f });
+	utils::DrawRect(Rectf{ 60.0f,230.0f,110.0f,130.0f });
+	//goal pos
+	utils::FillRect(Rectf{ 530.0f,230.0f,110.0f,130.0f });
+	utils::DrawRect(Rectf{ 530.0f,230.0f,110.0f,130.0f });
 }
 
 void Game::ProcessKeyDownEvent(const SDL_KeyboardEvent& e)
