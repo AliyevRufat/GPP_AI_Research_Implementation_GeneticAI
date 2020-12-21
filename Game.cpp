@@ -20,7 +20,7 @@ Game::~Game()
 
 void Game::Initialize()
 {
-	//obstacle
+	//obstacle///
 	//m_Obstacles.AddObstacle(Vector2f(350.0f, 350.0f), 100.0f, 50, true, 200.0f); // moving
 	//m_Obstacles.AddObstacle(Vector2f(0.0f, 250.0f), 600, 50, false, 0.0f); //straight line
 	//m_Obstacles.AddObstacle(Vector2f(0.0f, 350.0f), 200.0f, 50, false, 0.0f);
