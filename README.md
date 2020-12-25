@@ -9,11 +9,17 @@ Every generation the performance of each individual of that generation is evalua
 The new generation is then used in the next iteration of the algorithm. Traditionally , the algorithm stops when either a max number of generations has been reached or the problem has been solved. 
 A typical genetic algorithm requires a genetic representation of the solution domain and a performance function that evaluates how well the individuals did in this iteration.
 This generational process is repeated until a termination condition has been reached. Common terminating conditions are:
+
 •	A solution is found that satisfies minimum criteria
+
 •	Fixed number of generations reached
+
 •	Allocated budget (computation time/money) reached
+
 •	The highest ranking solution's fitness is reaching or has reached a plateau such that successive iterations no longer produce better results
+
 •	Manual inspection
+
 •	Combinations of the above
 
 
