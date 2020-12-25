@@ -115,9 +115,9 @@ void AIPopulationManager::MutateNextGen()
 	}
 	else // if no, then increase the mutation rate to randomize the directions more often to get to target
 	{
-		if (m_MutationRate < 0.1f)
+		if (m_MutationRate < 0.15f)
 		{
-			m_MutationRate += 0.01f;
+			m_MutationRate += 0.005f;
 		}
 	}
 	//
@@ -127,4 +127,15 @@ void AIPopulationManager::MutateNextGen()
 void AIPopulationManager::SetGoal(const Vector2f& goal)
 {
 	std::for_each(m_Players.begin(), m_Players.end(), [&](AIPlayer& a) {a.SetGoal(goal); });
+}
+
+bool AIPopulationManager::HasReachedTheGoal()
+{
+	auto it = std::find_if(m_Players.begin(), m_Players.end(), [&](AIPlayer a) { return a.m_HasReachedGoal; });
+
+	if (it != m_Players.end())
+	{
+		return true; //one of the players reached the goal
+	}
+	return false; //none of the players reached the goal
 }

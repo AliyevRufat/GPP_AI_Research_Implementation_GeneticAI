@@ -16,6 +16,7 @@ public:
 	AIPlayer SelectBestParent();
 	void MutateNextGen();
 	void SetGoal(const Vector2f& goal);
+	bool HasReachedTheGoal();
 private:
 	//Datamembers
 	std::vector<AIPlayer> m_Players;

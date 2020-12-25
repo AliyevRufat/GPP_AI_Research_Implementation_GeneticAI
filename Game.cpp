@@ -5,7 +5,7 @@
 
 Game::Game(const Window& window)
 	:m_Window{ window }
-	, m_Population{ 1000 }
+	, m_Population{ 5000 }
 	, m_Goal{ 530.0f,230.0f }
 	, m_Obstacles{}
 	, m_CanStart{ false }
@@ -94,6 +94,11 @@ void Game::Update(float elapsedSec)
 		}
 		//
 		m_Obstacles.Update(elapsedSec);
+	}
+	//if reached the goal
+	if (m_Population.HasReachedTheGoal())
+	{
+		std::cout << "REACHED THE GOAL" << '\n';
 	}
 }
 

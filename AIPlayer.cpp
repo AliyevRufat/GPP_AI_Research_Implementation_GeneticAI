@@ -22,7 +22,7 @@ AIPlayer::AIPlayer()
 	, m_IsObstacleWall{}
 {
 	//starting pos
-	m_Pos = Vector2f(70.0f, 250.0f);
+	m_Pos = Vector2f(100.0f, 280.0f);
 	m_Vel = Vector2f(0, 0);
 	m_Acc = Vector2f(0, 0);
 }
@@ -57,7 +57,7 @@ void AIPlayer::Update(float elapsedSec, const Obstacles& obstacles)
 		{
 			m_IsDead = true;
 		}
-		else if (Distance(m_Goal) < 5.0f) // if reached the goal
+		else if (utils::IsOverlapping(Rectf{ m_Pos.x, m_Pos.y , m_Size ,m_Size }, Rectf{ m_Goal.x ,m_Goal.y , 110.0f, 130.0f })) // if reached the goal
 		{
 			m_HasReachedGoal = true;
 		}
