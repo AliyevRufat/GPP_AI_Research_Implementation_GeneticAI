@@ -91,9 +91,13 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 **BEFORE FIX** Generation 10 (mutated directions are randomized and sometimes it gives bad mutation and the mutation is wasted).
 
+![problem2](https://user-images.githubusercontent.com/76409612/103141392-fbc63400-46f3-11eb-9c2b-15250b8d2b83.jpg)
+
 ![Problem2](https://user-images.githubusercontent.com/76409612/103141090-9112f980-46ef-11eb-8c3e-3efa72e1f4f3.gif)
 
 **AFTER FIX** Generation 10 (mutated directions are altered by taking into account "parent's" direction and is more precise)
+
+![problem2Solved](https://user-images.githubusercontent.com/76409612/103141393-fe288e00-46f3-11eb-9d19-7f2c6735f200.jpg)
 
 ![Problem2Solved](https://user-images.githubusercontent.com/76409612/103141092-9708da80-46ef-11eb-97e4-53e177f091bc.gif)
 
