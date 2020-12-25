@@ -95,6 +95,14 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 * And the last optimization I did was for **shortening** the path after the AI reached the goal at least once. For this I changed the CalculatePerformance() of the AIPlayer by making a new calculation when that specific AIPlayer has reached the goal. This calculation is based on the amount of moves it took to reach the goal, so the less movement it took the better the performance will be. And also in the AIPopulation ,in the SelectBestParent() function which previously returned the parent with the max performance I check if that parent has reached the goal. If yes, then I change the **minimumAmountOfMoves** that a AIPlayer can take before it dies. By doing this I “kill off” the AIPlayers that took more steps to reach the goal than the previous best parent. And gradually this will shorten the path that the AIPlayers are taking to reach the goal.
 
+**BEFORE FIX** Generation 20 (when the AI finds the goal ,it will never try other paths and will always take the same one)
+
+![Problem3](https://user-images.githubusercontent.com/76409612/103141238-14354f00-46f2-11eb-8348-87bf99de189c.gif)
+
+**AFTER FIX** Generation 20 (when the AI finds the goal ,it optimizes it when it finds the goal with shorter path)
+
+![Problem3Solved](https://user-images.githubusercontent.com/76409612/103141239-17303f80-46f2-11eb-8f4b-956256a3d1fe.gif)
+
 ##### **6th part** : 
 **Making fun levels :**
 
