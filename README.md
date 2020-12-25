@@ -35,7 +35,7 @@ Classes made for the implementation :
 	-Main class 
 	-Some helper classes 
 
-### How it is implemented :
+### How does it work :
 
 ##### **1st part** :
 **Basics :**
