@@ -60,6 +60,8 @@ After the first generation we have to make the **next generation**. First thing 
 Now we need 2 more functions that will make this generation based genetic algorithm work. First one is the **Selection()** function. In this function the first step is to determine which **parent** from the last generation did the best, so had the best performance score. Afterwards I Breed that best parent and add its child to the first element of the AIPlayer list and set it as the best player to indicate it when I draw it for more visual feedback. After that I Breed that same parent and add them all to the list of AIPlayers. So right now we have a list of AIPlayers that have exactly the same information as the best player of the previous generation. This is not good because this way all of the AIPlayers will move in the same directions with the same amount of moves. So we have to **mutate** them now. This is the last function we need. In AIGenetics we add this function. Here we take a random number inside of a for loop and if this number is smaller than the mutationRate we **“mutate”** that specific direction and change it (randomly). My default mutationRate is 1%. After adding this function we add a **MutateNextGen()** function to the AIPopulation that mutates the whole list of AIPlayers. Afterwards in the Game **Update()** function we call these functions if the AIPlayers are dead. 
 So now we have a working AI using the genetic algorithm. The AI basically learns by its parent and also mutates a bit to explore new paths and maybe smoothen out the taken paths.
 
+![WorkingAI](https://user-images.githubusercontent.com/76409612/103140813-a71ebb00-46eb-11eb-854d-effea5e8a184.gif)
+
 ##### **4th part** : 
 **Encountered Issues and possible optimizations :**
 
