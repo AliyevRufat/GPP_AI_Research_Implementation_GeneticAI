@@ -97,9 +97,19 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 **BEFORE FIX** Generation 20 (when the AI finds the goal ,it will never try other paths and will always take the same one)
 
+![problem3](https://user-images.githubusercontent.com/76409612/103141272-8c037980-46f2-11eb-8c16-121cd8d1367a.jpg)
+
+![problem3 1](https://user-images.githubusercontent.com/76409612/103141275-8efe6a00-46f2-11eb-8279-38318117a0c3.jpg)
+
 ![Problem3](https://user-images.githubusercontent.com/76409612/103141238-14354f00-46f2-11eb-8348-87bf99de189c.gif)
 
 **AFTER FIX** Generation 20 (when the AI finds the goal ,it optimizes it when it finds the goal with shorter path)
+
+![problem3Solved](https://user-images.githubusercontent.com/76409612/103141277-9160c400-46f2-11eb-9db3-327a2c81c9a3.jpg)
+
+![problem3Solved 1](https://user-images.githubusercontent.com/76409612/103141278-932a8780-46f2-11eb-99b2-84fc50a7bcd5.jpg)
+
+![problem3Solved 2](https://user-images.githubusercontent.com/76409612/103141279-958ce180-46f2-11eb-9212-0e73c12d6bc6.jpg)
 
 ![Problem3Solved](https://user-images.githubusercontent.com/76409612/103141239-17303f80-46f2-11eb-8f4b-956256a3d1fe.gif)
 
