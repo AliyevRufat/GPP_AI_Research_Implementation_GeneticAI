@@ -46,7 +46,7 @@ Classes made for the implementation :
 
 First of  all the **AIPlayer** class was made to have a moving player. Afterwards added **AIGenetics** class that holds information about the (randomized) directions (list) and amount of moves that the AIPlayer took. Then I made **AIPopulation** class that is kind of a manager of AIPlayer class and that could only spawn a given amount of AIPlayers and update and draw them. So right now the AIPlayers randomly moves without taking the goal into consideration. 
 
-![Basics](https://user-images.githubusercontent.com/76409612/103140765-ff08f200-46ea-11eb-96dd-a4f8fee20ee9.gif)
+![Basics](https://user-images.githubusercontent.com/76409612/103140830-d8978680-46eb-11eb-87a1-4d7886141a8b.gif)
 
 ##### **2nd part** : 
 **Starter functionality :**
