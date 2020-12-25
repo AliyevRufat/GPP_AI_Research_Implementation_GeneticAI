@@ -39,21 +39,21 @@ Classes made for the implementation :
 	-Main class 
 	-Some helper classes 
 
-### How does it work :
+## How does it work :
 
-##### **1st part** :
+#### **1st part** :
 **Basics :**
 
 First of  all the **AIPlayer** class was made to have a moving player. Afterwards added **AIGenetics** class that holds information about the (randomized) directions (list) and amount of moves that the AIPlayer took. Then I made **AIPopulation** class that is kind of a manager of AIPlayer class and that could only spawn a given amount of AIPlayers and update and draw them. So right now the AIPlayers randomly moves without taking the goal into consideration. 
 
 ![Basics](https://user-images.githubusercontent.com/76409612/103140830-d8978680-46eb-11eb-87a1-4d7886141a8b.gif)
 
-##### **2nd part** : 
+#### **2nd part** : 
 **Starter functionality :**
 
 So right now I have randomly moving AIPlayers. I added death state to the AIPopulation, that kills AIPlayers whose taken amount of moves (that is cached in their AIGenetic) is bigger than the direction list size. And made it so the game ‘restarts’ if all AIPlayers are dead. For the next step I added **CalculatePerformance()** to AIPlayers. This function is pretty simple as it just takes the distance between AIPlayers position and the goals position. I also made it so the players activate a Boolean when they reach the goal. So right now I have everything that I need to go to the next step.
 
-##### **3rd part** : 
+#### **3rd part** : 
 **Working AI :**
 
 After the first generation we have to make the **next generation**. First thing I did is to add a **Breed()** function to the AIPlayer class which copies the data from its AIGenetics and return a new AIPlayer copy with that information. 
@@ -62,7 +62,7 @@ So now we have a working AI using the genetic algorithm. The AI basically learns
 
 ![WorkingAI](https://user-images.githubusercontent.com/76409612/103140813-a71ebb00-46eb-11eb-854d-effea5e8a184.gif)
 
-##### **4th part** : 
+#### **4th part** : 
 **Encountered Issues :**
 
 Now that we have a working AI, I added an **Obstacles** class that can spawn obstacles which can damage you or change your direction when you overlap with it (you specify this with a bool). They can also move in the given range if you specify it. I added this for design and testing purposes. To see how the AI would react in different environments and situations. First I started with simple levels and gradually built it up and made it harder to complete. While testing the AI in differenct levels I encountered some issues or behavior I didn't like.
@@ -70,7 +70,7 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 **The second** thing that I disliked is that right now they just mutate with random (angle) directions instead of taking into account the parents angle and slightly changing it. 
 **Tha last thing** I didn’t like was the fact that when the AI finds a path it doesn’t shorten it out and make it faster to reach. It just took the same path over and over again.
 
-##### **5th part** : 
+#### **5th part** : 
 **Solution to the issues :**
 
 * The first thing I wanted to fix is that the AI should explore more directions (mutate more) if it doesn’t reach the end goal. So I alternated the MutateNextGen() function in my AIPopulation where before I just called AIPlayers.MutateNextGen() which actually mutates them. But in AIPopulation I pass the mutationRate to that. So what I did was **increase** the mutationRate by 0.5% each time the AI can’t reach the endGoal. When I tried to run this it was working fine at the start but after a while it reached 70-80% , and it looked like the AI was always randomly moving (which he was). So I limited this increase in mutationRate. It can’t exceed 15% and once it finally found the goal I turn the mutationRate back to default value which is 1% because at this point we don’t need more mutations than usual. 
@@ -121,7 +121,7 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 ![Problem3Solved](https://user-images.githubusercontent.com/76409612/103141239-17303f80-46f2-11eb-8f4b-956256a3d1fe.gif)
 
-##### **6th part** : 
+#### **6th part** : 
 **Making fun level :**
 
 Now that the whole genetic algorithm AI is working, I added a level and challenged the AI. I have always been a fan of a game called ‘The hardest game ever’ , so I made a classic level inspired by this game for fun. You can see the level at the start of this ReadME.
