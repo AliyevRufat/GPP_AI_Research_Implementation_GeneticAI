@@ -1,7 +1,7 @@
 # GPP_AI_Research_Implementation_GeneticAI
 Genetic algorithm
 
-				What is it?
+# What is it?
 **Genetic algorithm** is a problem-solving solution inspired by the process of **natural selection**. They are commonly used to generate high quality solutions and search problems by using methods such as **selection** , **crossover** and **mutation**. 
 First of all you need a starter population. The population depends on the nature of the problem, but usually it contains hundreds or thousands of individuals. 
 Each individual has a set of properties **(genetics)** which will be **mutated** and slightly altered based on the results of the previous generations. Usually the algorithm starts from a population of **randomly generated individuals** and is an iterative process , where each iteration is called a **generation**. 
