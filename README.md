@@ -77,6 +77,7 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 **BEFORE FIX** Generation 40 (mutation always 1%).
 
+![Problem1](https://user-images.githubusercontent.com/76409612/103140982-2ca36a80-46ee-11eb-8937-e4f6efa937a8.gif)
 
 **AFTER FIX** Generation 40 (mutation increased to 15% that's why it finally found the goal, after finding mutation went to 1% again to shorten the path).
 
