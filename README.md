@@ -26,6 +26,7 @@ This generational process is repeated until a termination condition has been rea
 				Implementation
 The project is written in **c++ using SDL framework**.
 Classes made for the implementation : 
+
 	-AIGenetics class
 	-AIPlayer class 
 	-AIPopulation class 
