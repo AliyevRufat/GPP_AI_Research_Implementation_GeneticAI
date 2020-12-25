@@ -75,10 +75,11 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 The first thing I wanted to fix is that the AI should explore more directions (mutate more) if it doesn’t reach the end goal. So I alternated the MutateNextGen() function in my AIPopulation where before I just called AIPlayers.MutateNextGen() which actually mutates them. But in AIPopulation I pass the mutationRate to that. So what I did was **increase** the mutationRate by 0.5% each time the AI can’t reach the endGoal. When I tried to run this it was working fine at the start but after a while it reached 70-80% , and it looked like the AI was always randomly moving (which he was). So I limited this increase in mutationRate. It can’t exceed 15% and once it finally found the goal I turn the mutationRate back to default value which is 1% because at this point we don’t need more mutations than usual. 
 
-**BEFORE FIX**
+**BEFORE FIX** Generation 40 (mutation always 1%).
 
 
-**AFTER FIX**
+**AFTER FIX** Generation 40 (mutation increased to 15% that's why it finally found the goal, after finding mutation went to 1% again to shorten the path).
+
 ![ProblemSolved1](https://user-images.githubusercontent.com/76409612/103140941-7e97c080-46ed-11eb-8ade-392d493dd421.gif)
 
 The next problem was that when mutating it took a random direction. So with **acos()** I got back my oldAngle from my current Direction.x which is a copy of direction of the parent from previous gen and added an offset to it between -90 and 90 degress. By doing this the new angle of mutated direction of the AI was not completely random but was actually altered by using the (angle) direction of the parent.
