@@ -44,21 +44,21 @@ Classes made for the implementation :
 #### **1st part** :
 **Basics :**
 
-First of  all the **AIPlayer** class was made to have a moving player. Afterwards added **AIGenetics** class that holds information about the (randomized) directions (list) and amount of moves that the AIPlayer took. Then I made **AIPopulation** class that is kind of a manager of AIPlayer class and that could only spawn a given amount of AIPlayers and update and draw them. So right now the AIPlayers randomly moves without taking the goal into consideration. 
+First of  all the **AIPlayer** class was made to have a moving player. Afterwards I added **AIGenetics** class that holds information about the (randomized) directions (list) and amount of moves that the AIPlayer took. Then I made **AIPopulation** class that is kind of a manager of AIPlayer class and that could only spawn a given amount of AIPlayers and update and draw them. So right now the AIPlayers randomly move without taking the goal into consideration. 
 
 ![Basics](https://user-images.githubusercontent.com/76409612/103140830-d8978680-46eb-11eb-87a1-4d7886141a8b.gif)
 
 #### **2nd part** : 
 **Starter functionality :**
 
-So right now I have randomly moving AIPlayers. I added death state to the AIPopulation, that kills AIPlayers whose taken amount of moves (that is cached in their AIGenetic) is bigger than the direction list size. And made it so the game ‘restarts’ if all AIPlayers are dead. For the next step I added **CalculatePerformance()** to AIPlayers. This function is pretty simple as it just takes the distance between AIPlayers position and the goals position. I also made it so the players activate a Boolean when they reach the goal. So right now I have everything that I need to go to the next step.
+So right now I have randomly moving AIPlayers. I added death state to the AIPopulation, that kills AIPlayer which has taken more amount of moves (that is cached in their AIGenetic) than the direction list size. And made it so the game ‘restarts’ if all AIPlayers are dead. For the next step I added **CalculatePerformance()** to AIPlayers. This function is pretty simple as it just takes the distance between AIPlayer's position and the goal's position. I also made it so the players activate a Boolean when they reach the goal. So right now I have everything that I need to move onto the next step.
 
 #### **3rd part** : 
 **Working AI :**
 
-After the first generation we have to make the **next generation**. First thing I did is to add a **Breed()** function to the AIPlayer class which copies the data from its AIGenetics and return a new AIPlayer copy with that information. 
-Now we need 2 more functions that will make this generation based genetic algorithm work. First one is the **Selection()** function. In this function the first step is to determine which **parent** from the last generation did the best, so had the best performance score. Afterwards I Breed that best parent and add its child to the first element of the AIPlayer list and set it as the best player to indicate it when I draw it for more visual feedback. After that I Breed that same parent and add them all to the list of AIPlayers. So right now we have a list of AIPlayers that have exactly the same information as the best player of the previous generation. This is not good because this way all of the AIPlayers will move in the same directions with the same amount of moves. So we have to **mutate** them now. This is the last function we need. In AIGenetics we add this function. Here we take a random number inside of a for loop and if this number is smaller than the mutationRate we **“mutate”** that specific direction and change it (randomly). My default mutationRate is 1%. After adding this function we add a **MutateNextGen()** function to the AIPopulation that mutates the whole list of AIPlayers. Afterwards in the Game **Update()** function we call these functions if the AIPlayers are dead. 
-So now we have a working AI using the genetic algorithm. The AI basically learns by its parent and also mutates a bit to explore new paths and maybe smoothen out the taken paths.
+After the first generation we have to make the **next generation**. First thing I did is to add a **Breed()** function to the AIPlayer class which copies the data from its AIGenetics and returns a new AIPlayer copy with that information. 
+Now we need 2 more functions that will make this generation based genetic algorithm work. First one is the **Selection()** function. In this function the first step is to determine which **parent** from the last generation did the best, so had the best performance score. Afterwards I Breed that best parent and add its child to the first element of the AIPlayer list and set it as the best player to indicate it when I draw it for more visual feedback. After that I Breed that same parent and add them all to the list of AIPlayers. So right now we have a list of AIPlayers that have exactly the same information as the best player of the previous generation. This is not good because this way all of the AIPlayers will move in the same direction with the same amount of moves. So we have to **mutate** them now. This is the last function we need. In AIGenetics we add this function. Here we take a random number inside of a for loop and if this number is smaller than the mutationRate we **“mutate”** that specific direction and change it (randomly). My default mutationRate is 1%. After adding this function we add a **MutateNextGen()** function to the AIPopulation that mutates the whole list of AIPlayers. Afterwards in the Game **Update()** function we call these functions if the AIPlayers are dead. 
+So now we have a working AI using the genetic algorithm. The AI basically learns by the information it gets from it's parent and also mutates a bit to explore new paths and reach the goal.
 
 ![WorkingAI](https://user-images.githubusercontent.com/76409612/103140813-a71ebb00-46eb-11eb-854d-effea5e8a184.gif)
 
@@ -66,14 +66,14 @@ So now we have a working AI using the genetic algorithm. The AI basically learns
 **Encountered Issues :**
 
 Now that we have a working AI, I added an **Obstacles** class that can spawn obstacles which can damage you or change your direction when you overlap with it (you specify this with a bool). They can also move in the given range if you specify it. I added this for design and testing purposes. To see how the AI would react in different environments and situations. First I started with simple levels and gradually built it up and made it harder to complete. While testing the AI in differenct levels I encountered some issues or behavior I didn't like.
-**The First thing** that bothered me is that when the goal is in a corner right behind an obstacle the AIPlayers keep going there in a straight line and can’t reach it because the CalculatePerformance of a player right behind the obstacle is shorter than any other.
-**The second** thing that I disliked is that right now they just mutate with random (angle) directions instead of taking into account the parents angle and slightly changing it. 
-**Tha last thing** I didn’t like was the fact that when the AI finds a path it doesn’t shorten it out and make it faster to reach. It just took the same path over and over again.
+* **The first thing** that bothered me is that when the goal is in a corner right behind an obstacle the AIPlayers keep going there in a straight line and can’t reach it because the performance of a player right behind the obstacle is shorter than any other.
+* **The second** thing that I disliked is that right now they just mutate with random (angle) directions instead of taking into account the parents angle and slightly changing it. 
+* **The last thing** I didn’t like was the fact that when the AI finds a path it doesn’t shorten it out and makes it faster to reach. It just took the same path over and over again.
 
 #### **5th part** : 
 **Solution to the issues :**
 
-* The first thing I wanted to fix is that the AI should explore more directions (mutate more) if it doesn’t reach the end goal. So I alternated the MutateNextGen() function in my AIPopulation where before I just called AIPlayers.MutateNextGen() which actually mutates them. But in AIPopulation I pass the mutationRate to that. So what I did was **increase** the mutationRate by 0.5% each time the AI can’t reach the endGoal. When I tried to run this it was working fine at the start but after a while it reached 70-80% , and it looked like the AI was always randomly moving (which he was). So I limited this increase in mutationRate. It can’t exceed 15% and once it finally found the goal I turn the mutationRate back to default value which is 1% because at this point we don’t need more mutations than usual. 
+* The first thing I wanted to fix is that the AI should explore more directions (mutate more) if it doesn’t reach the end goal. So I alternated the MutateNextGen() function in my AIPopulation where I call AIPlayers.MutateNextGen() ,which mutates them. But in AIPopulation I pass the mutationRate to that. So what I did was **increase** the mutationRate by 0.5% each time the AI can’t reach the endGoal. When I tried to run this it was working fine at the start but after a while it reached 70-80% , and it looked like the AI was always randomly moving (which he was). So I limited this increase in mutationRate. Now it can’t exceed 15% and once it finally found the goal I turn the mutationRate back to default value which is 1% because at this point we don’t need more mutations than usual. 
 
 **BEFORE FIX** Generation 40 (mutation always 1%).
 
@@ -81,13 +81,13 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 ![Problem1](https://user-images.githubusercontent.com/76409612/103140982-2ca36a80-46ee-11eb-8937-e4f6efa937a8.gif)
 
-**AFTER FIX** Generation 40 (mutation increased to 15% that's why it finally found the goal, after finding mutation went to 1% again to shorten the path).
+**AFTER FIX** Generation 40 (mutation increased to 15% that's why it finally found the goal, after finding the goal, mutation changed to 1% again).
 
 ![problem1Solved](https://user-images.githubusercontent.com/76409612/103141363-9eca7e00-46f3-11eb-97cd-c4abe6d90d6d.jpg)
 
 ![ProblemSolved1](https://user-images.githubusercontent.com/76409612/103140941-7e97c080-46ed-11eb-8ade-392d493dd421.gif)
 
-* The next problem was that when mutating it took a random direction. So with **acos()** I got back my oldAngle from my current Direction.x which is a copy of direction of the parent from previous gen and added an offset to it between -90 and 90 degress. By doing this the new angle of mutated direction of the AI was not completely random but was actually altered by using the (angle) direction of the parent.
+* The next problem was that when mutating it took a random direction. So with **acos()** I get back my oldAngle from my current Direction.x which is a copy of direction of the parent from previous gen and added an offset to it between -90 and 90 degress. By doing this the new angle of mutated direction of the AI was not completely random but was actually altered by using the (angle) direction of the parent.
 
 **BEFORE FIX** Generation 10 (mutated directions are randomized and sometimes it gives bad mutation and the mutation is wasted).
 
@@ -95,7 +95,7 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 ![Problem2](https://user-images.githubusercontent.com/76409612/103141090-9112f980-46ef-11eb-8c3e-3efa72e1f4f3.gif)
 
-**AFTER FIX** Generation 10 (mutated directions are altered by taking into account "parent's" direction and is more precise)
+**AFTER FIX** Generation 10 (mutated directions are altered by taking into account "parent's" direction and it is more precise)
 
 ![problem2Solved](https://user-images.githubusercontent.com/76409612/103141393-fe288e00-46f3-11eb-9d19-7f2c6735f200.jpg)
 
@@ -111,7 +111,7 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 ![Problem3](https://user-images.githubusercontent.com/76409612/103141238-14354f00-46f2-11eb-8348-87bf99de189c.gif)
 
-**AFTER FIX** Generation 20 (when the AI finds the goal ,it optimizes it when it finds the goal with shorter path)
+**AFTER FIX** Generation 20 (when the AI finds the goal ,it still looks for other shorter paths)
 
 ![problem3Solved](https://user-images.githubusercontent.com/76409612/103141277-9160c400-46f2-11eb-9db3-327a2c81c9a3.jpg)
 
@@ -124,12 +124,13 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 #### **6th part** : 
 **Making fun level :**
 
-Now that the whole genetic algorithm AI is working, I added a level and challenged the AI. I have always been a fan of a game called ‘The hardest game ever’ , so I made a classic level inspired by this game for fun. You can see the level at the start of this ReadME.
+Now that the whole genetic algorithm AI is working in a way I wanted it to work, I added a level and challenged the AI. I have always been a fan of a game called ‘The hardest game ever’ , so I made a classic level with moving obstacles inspired by this game for fun. You can see the level at the start of this ReadME.
 
 ## RESULT
 
-After implementing the above mentioned functions and behavior, the **AI** does what I wanted it to do and uses **a genetic algorithm** to do it. The main goal was that the AI reaches the given position. On average (depending on difficulty of the level) it reaches the given goal in 15-30 generations. On some cases where the level is built too difficult it might take too long or get stuck but that is of course because I didn’t implement further AI learning. 
+After implementing the above mentioned functions and behavior, the **AI** does what I wanted it to do and uses **a genetic algorithm** to do it. The main goal was that the AI reaches the given position. On average (depending on difficulty of the level) it reaches the given goal in 15-30 generations. Without any obstacles it finds the goal in 2-5 generations. On some cases where the level is built too difficult it might take too long or get stuck but that is of course because I didn’t implement further AI learning. 
 
 As a conclusion I really enjoyed working on this project and this topic. I always wanted to test this out and see how the AI actually ‘learns’ and becomes smarter each iteration. I am definitely planning on doing more research and working on more projects like this in the future that involves AI learning. 
 
 
+https://en.wikipedia.org/wiki/Genetic_algorithm#Methodology
