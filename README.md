@@ -63,7 +63,7 @@ So now we have a working AI using the genetic algorithm. The AI basically learns
 ![WorkingAI](https://user-images.githubusercontent.com/76409612/103140813-a71ebb00-46eb-11eb-854d-effea5e8a184.gif)
 
 ##### **4th part** : 
-**Encountered Issues and possible optimizations :**
+**Encountered Issues :**
 
 Now that we have a working AI, I added an **Obstacles** class that can spawn obstacles which can damage you or change your direction when you overlap with it (you specify this with a bool). They can also move in the given range if you specify it. I added this for design and testing purposes. To see how the AI would react in different environments and situations. First I started with simple levels and gradually built it up and made it harder to complete. While testing the AI in differenct levels I encountered some issues or behavior I didn't like.
 **The First thing** that bothered me is that when the goal is in a corner right behind an obstacle the AIPlayers keep going there in a straight line and can’t reach it because the CalculatePerformance of a player right behind the obstacle is shorter than any other.
