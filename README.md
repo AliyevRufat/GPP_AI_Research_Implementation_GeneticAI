@@ -6,7 +6,7 @@
 
 
 # What is it?
-**Genetic algorithm** is a problem-solving solution inspired by the process of **natural selection**. They are commonly used to generate high quality solutions and search problems by using methods such as **selection** , **crossover** and **mutation**. 
+**Genetic algorithm** is a problem-solving solution inspired by the process of **natural selection**. It is commonly used to generate high quality solutions and to search problems by using methods such as **selection** , **crossover** and **mutation**. There is a number of steps to take to ensure correct implementation. 
 First of all you need a starter population. The population depends on the nature of the problem, but usually it contains hundreds or thousands of individuals. 
 Each individual has a set of properties **(genetics)** which will be **mutated** and slightly altered based on the results of the previous generations. Usually the algorithm starts from a population of **randomly generated individuals** and is an iterative process , where each iteration is called a **generation**. 
 Every generation the performance of each individual of that generation is evaluated. This performance is usually the value of the objective function. The better the performance the more chances of succeeding there is for the next generation. The individuals that performed better than others are selected for breeding of the **next generations**. Their genetics are slightly altered to form the new generation. 
