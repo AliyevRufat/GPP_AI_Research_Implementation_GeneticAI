@@ -1,6 +1,6 @@
-# GPP_AI_Research_Implementation_GeneticAI
-Genetic algorithm
+# Genetic algorithm
 
+### Demonstration
 
 ![Level1Reached](https://user-images.githubusercontent.com/76409612/103140693-0da2d980-46ea-11eb-86e1-c0248a9e5338.gif)
 
@@ -132,5 +132,10 @@ After implementing the above mentioned functions and behavior, the **AI** does w
 
 As a conclusion I really enjoyed working on this project and this topic. I always wanted to test this out and see how the AI actually ‘learns’ and becomes smarter each iteration. I am definitely planning on doing more research and working on more projects like this in the future that involves AI learning. 
 
+## References
 
 https://en.wikipedia.org/wiki/Genetic_algorithm#Methodology
+https://www.youtube.com/watch?v=1i8muvzZkPw&ab_channel=MATLAB
+https://www.sciencedirect.com/topics/engineering/genetic-algorithm
+https://towardsdatascience.com/genetic-algorithm-explained-step-by-step-65358abe2bf
+
