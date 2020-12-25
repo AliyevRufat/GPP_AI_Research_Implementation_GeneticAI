@@ -35,7 +35,7 @@ Classes made for the implementation :
 	-Main class 
 	-Some helper classes 
 
-How it is implemented :
+### How it is implemented :
 
 ##### **1st part** :
 **Basics :**
@@ -76,7 +76,7 @@ And the last optimization I did was for **shortening** the path after the AI rea
 
 Now that the whole genetic algorithm AI is working, I added some levels and challenged the AI. I have always been a fan of  a game called ‘The hardest game ever’ , so I made some classic levels inspired by this game for fun.
 
-### RESULT
+## RESULT
 
 After implementing the above mentioned functions and behavior, the **AI** does what I wanted it to do and uses **a genetic algorithm** to do it. The main goal was that the AI reaches the given position. On average (depending on difficulty of the level) it reaches the given goal in 15-30 generations. On some cases where the level is built too difficult it might take too long or get stuck but that is of course because I didn’t implement further AI learning. 
 
