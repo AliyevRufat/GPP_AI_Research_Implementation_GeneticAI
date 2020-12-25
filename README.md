@@ -135,7 +135,10 @@ As a conclusion I really enjoyed working on this project and this topic. I alway
 ## References
 
 https://en.wikipedia.org/wiki/Genetic_algorithm#Methodology
+
 https://www.youtube.com/watch?v=1i8muvzZkPw&ab_channel=MATLAB
+
 https://www.sciencedirect.com/topics/engineering/genetic-algorithm
+
 https://towardsdatascience.com/genetic-algorithm-explained-step-by-step-65358abe2bf
 
