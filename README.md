@@ -124,7 +124,7 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 ##### **6th part** : 
 **Making fun level :**
 
-Now that the whole genetic algorithm AI is working, I added a levelsand challenged the AI. I have always been a fan of a game called ‘The hardest game ever’ , so I made a classic level inspired by this game for fun. You can see the level at the start of this ReadME.
+Now that the whole genetic algorithm AI is working, I added a level and challenged the AI. I have always been a fan of a game called ‘The hardest game ever’ , so I made a classic level inspired by this game for fun. You can see the level at the start of this ReadME.
 
 ## RESULT
 
