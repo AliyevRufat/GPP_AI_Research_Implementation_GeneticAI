@@ -85,11 +85,11 @@ Now that we have a working AI, I added an **Obstacles** class that can spawn obs
 
 * The next problem was that when mutating it took a random direction. So with **acos()** I got back my oldAngle from my current Direction.x which is a copy of direction of the parent from previous gen and added an offset to it between -90 and 90 degress. By doing this the new angle of mutated direction of the AI was not completely random but was actually altered by using the (angle) direction of the parent.
 
-**BEFORE FIX**
+**BEFORE FIX** Generation 10 (mutated directions are randomized and sometimes it gives bad mutation and the mutation is wasted).
 
 ![Problem2](https://user-images.githubusercontent.com/76409612/103141090-9112f980-46ef-11eb-8c3e-3efa72e1f4f3.gif)
 
-**AFTER FIX** 
+**AFTER FIX** Generation 10 (mutated directions are altered by taking into account "parent's" direction and is more precise)
 
 ![Problem2Solved](https://user-images.githubusercontent.com/76409612/103141092-9708da80-46ef-11eb-97e4-53e177f091bc.gif)
 
