@@ -22,11 +22,6 @@ This generational process is repeated until a termination condition has been rea
 *	Combinations of the above
 
 
-![cullingRast](https://user-images.githubusercontent.com/76409612/103227260-2f8c9e00-492e-11eb-95fe-17f407c2cff9.gif)
-
-
-
-
 
 ## Implementation
 The project is written in **c++ using SDL framework**.
